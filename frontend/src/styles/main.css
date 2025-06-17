@@ -1,0 +1,87 @@
+.parallax-banner {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../assets/banner.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  text-align: center;
+  padding: 0 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.parallax-banner .overlay {
+  background-color: rgba(0, 0, 0, 0.55);
+  padding: 40px 30px;
+  border-radius: 15px;
+  max-width: 700px;
+  width: 100%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+.banner-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 0.3em;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.banner-subtitle {
+  font-size: 1.8rem;
+  margin-bottom: 1.2em;
+  font-weight: 600;
+}
+
+.highlight {
+  color: #f7b733; /* яркий желтый */
+  font-weight: 700;
+}
+
+.banner-features {
+  list-style: none;
+  padding: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: left;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.banner-features li {
+  margin-bottom: 0.8em;
+  position: relative;
+  padding-left: 25px;
+}
+
+.banner-features li::before {
+  content: "✔"; /* галочка */
+  position: absolute;
+  left: 0;
+  color: #f7b733;
+  font-weight: bold;
+}
+
+.section-info {
+  background: #f8f9fa; /* светлый фон, например, сероватый */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  padding: 40px 30px;
+}
+
+.section-info .container {
+  max-width: 900px;
+}
+
+.section-popular-cars {
+  background: #ffffff; /* белый фон */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  padding: 40px 30px;
+}
