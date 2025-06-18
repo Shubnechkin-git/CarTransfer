@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Badge, Button, Card, Col, Image, Row } from "react-bootstrap";
+import { Badge, Button, Card, Col, Row } from "react-bootstrap";
 import {
   FaCalendarAlt,
   FaCarAlt,
@@ -9,8 +8,8 @@ import {
 } from "react-icons/fa";
 import { GiGearStickPattern } from "react-icons/gi";
 import { IoMdSpeedometer } from "react-icons/io";
-import GalleryBlock from "./GalleryBlock";
 import { useModal } from "../../context/ModalContext";
+import GalleryBlock from "./GalleryBlock";
 
 export default function MainInformBlock({ car }) {
   const formatPrice = (price) => {

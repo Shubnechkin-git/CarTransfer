@@ -1,10 +1,49 @@
-import React from "react";
-import { Card, Col } from "react-bootstrap";
+import { useState } from "react";
+import { Alert, Card, Col, Spinner } from "react-bootstrap";
+import { useApi } from "../../context/ApiContext";
 
 export default function Feedback({
   mainColor = "rgba(44, 50, 74, 0.8)",
   isModal = false,
 }) {
+  const { createFeedback } = useApi();
+
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+
+  const [isSubmitting, setSubmitting] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleChange = (e) => {
+    setForm((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setSuccessMessage("");
+    setErrorMessage("");
+
+    try {
+      const result = await createFeedback(form);
+      if (result.success) {
+        setSuccessMessage(result.message);
+        setForm({ name: "", phone: "", email: "", message: "" });
+      } else {
+        setErrorMessage(result.message || "Что-то пошло не так");
+      }
+    } catch (error) {
+      setErrorMessage(error.response?.data?.message || "Ошибка отправки");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   const content = (
     <Card
       className={`h-100 border-0 ${!isModal && "shadow-sm"}`}
@@ -16,7 +55,11 @@ export default function Feedback({
             Обратная связь
           </h2>
         )}
-        <form>
+
+        {successMessage && <Alert variant="success">{successMessage}</Alert>}
+        {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
+
+        <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="name" className="form-label">
               Ваше имя
@@ -25,7 +68,10 @@ export default function Feedback({
               type="text"
               className="form-control"
               id="name"
+              value={form.name}
+              onChange={handleChange}
               placeholder="Иван Иванов"
+              required
             />
           </div>
           <div className="mb-3">
@@ -36,7 +82,10 @@ export default function Feedback({
               type="tel"
               className="form-control"
               id="phone"
+              value={form.phone}
+              onChange={handleChange}
               placeholder="+7 900 000-00-00"
+              required
             />
           </div>
           <div className="mb-3">
@@ -47,7 +96,10 @@ export default function Feedback({
               type="email"
               className="form-control"
               id="email"
+              value={form.email}
+              onChange={handleChange}
               placeholder="example@mail.ru"
+              required
             />
           </div>
           <div className="mb-3">
@@ -58,7 +110,10 @@ export default function Feedback({
               className="form-control"
               id="message"
               rows="4"
+              value={form.message}
+              onChange={handleChange}
               placeholder="Ваш вопрос или комментарий"
+              required
             ></textarea>
           </div>
           <button
@@ -69,8 +124,16 @@ export default function Feedback({
               color: "white",
               border: "none",
             }}
+            disabled={isSubmitting}
           >
-            Отправить сообщение
+            {isSubmitting ? (
+              <>
+                <Spinner animation="border" size="sm" className="me-2" />
+                Отправка...
+              </>
+            ) : (
+              "Отправить сообщение"
+            )}
           </button>
         </form>
       </Card.Body>

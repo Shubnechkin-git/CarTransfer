@@ -1,6 +1,4 @@
-import React from "react";
-import { Button, Card, Col, Row, Tab, Tabs } from "react-bootstrap";
-import { FaStar } from "react-icons/fa";
+import { Card, Col, Row, Tab, Tabs } from "react-bootstrap";
 
 export default function DetailInformBlock({ car }) {
   return (
@@ -19,7 +17,7 @@ export default function DetailInformBlock({ car }) {
                     <Col key={index} xs={6} md={4} className="mb-2">
                       <div className="d-flex align-items-center">
                         <span className="text-primary me-2">•</span>
-                        <span>{feature}</span>
+                        <span>{feature.name}</span>
                       </div>
                     </Col>
                   ))}

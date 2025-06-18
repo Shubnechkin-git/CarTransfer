@@ -10,7 +10,7 @@ export default function GalleryBlock({ car }) {
       <Card className="border-0 shadow-sm mb-3">
         <Card.Body className="p-0 overflow-hidden rounded">
           <Image
-            src={car.images[activeImage]}
+            src={car.images[activeImage].url}
             alt={car.title}
             fluid
             className="w-100"
@@ -30,7 +30,7 @@ export default function GalleryBlock({ car }) {
             active={index === activeImage}
           >
             <Image
-              src={img}
+              src={img.url}
               alt={`${car.title} ${index + 1}`}
               width={80}
               height={60}

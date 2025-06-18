@@ -23,7 +23,7 @@ export default function ResultSearch({ filteredCars = [], countCars = 0 }) {
               <div className="position-relative">
                 <Card.Img
                   variant="top"
-                  src={car.image}
+                  src={car.images[0].url}
                   alt={car.title}
                   style={{ height: "200px", objectFit: "cover" }}
                 />

@@ -4,7 +4,6 @@ import { Card, Col, Image, Row } from "react-bootstrap";
 export default function AdvantagesBlock() {
   return (
     <div>
-      {" "}
       <h2 className="mb-4 text-center">Наши преимущества</h2>
       <Row className="mb-4 mt-5 d-flex justify-content-center">
         <Col md={4} className="mb-5">
@@ -42,7 +41,7 @@ export default function AdvantagesBlock() {
         </Col>
         <Col md={6} className="mb-3 d-flex justify-content-center">
           <Image
-            src="https://placehold.co/600x400?text=Салон+1"
+            src={require("../../assets/salon1.jpg")}
             alt="Фото салона 1"
             fluid
             rounded
@@ -51,7 +50,7 @@ export default function AdvantagesBlock() {
         </Col>
         <Col md={6} className="mb-3 d-flex justify-content-center">
           <Image
-            src="https://placehold.co/600x400?text=Салон+2"
+            src={require("../../assets/salon2.jpg")}
             alt="Фото салона 2"
             fluid
             rounded

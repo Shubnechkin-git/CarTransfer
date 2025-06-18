@@ -19,7 +19,7 @@ export default function CompanyBlock() {
         </Col>
         <Col md={6}>
           <img
-            src="https://placehold.co/600x400?text=О+нас"
+            src={require("../../assets/about.png")}
             alt="О компании"
             className="img-fluid rounded shadow-sm"
           />

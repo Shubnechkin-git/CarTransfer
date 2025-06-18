@@ -1,13 +1,14 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Main from "./pages/Main";
-import About from "./pages/About";
-import Catalog from "./pages/Catalog";
-import CarPage from "./pages/CarPage";
-import Contacts from "./pages/Contacts";
-import AppNavbar from "./components/Navbar";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import ModalForm from "./components/ModalForm";
+import AppNavbar from "./components/Navbar";
+import { ApiProvider } from "./context/ApiContext";
 import { ModalProvider, useModal } from "./context/ModalContext";
+import About from "./pages/About";
+import CarPage from "./pages/CarPage";
+import Catalog from "./pages/Catalog";
+import Contacts from "./pages/Contacts";
+import Main from "./pages/Main";
 
 const AppInit = () => {
   const { isShowModal, setIsShowModal } = useModal();
@@ -34,9 +35,11 @@ const AppInit = () => {
 
 function App() {
   return (
-    <ModalProvider>
-      <AppInit />
-    </ModalProvider>
+    <ApiProvider>
+      <ModalProvider>
+        <AppInit />
+      </ModalProvider>
+    </ApiProvider>
   );
 }
 
